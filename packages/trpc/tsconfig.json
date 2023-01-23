@@ -1,0 +1,4 @@
+{
+  "extends": "@all-track/tsconfig/base.json",
+  "exclude": ["dist", "build", "node_modules"]
+}
