@@ -5,6 +5,14 @@ main = "./build/index.mjs"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
 compatibility_date = "2022-04-05"
 
+route = "https://krolebord.online/api/*"
+
+[env.dev]
+route = "miniflare.test/api/*"
+
+[miniflare]
+route = "http://127.0.0.1/api*"
+
 [build]
 command = "npm run build"
 [build.upload]
