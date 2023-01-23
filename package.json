@@ -8,9 +8,10 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "start": "pnpm --prefix apps/remix start",
+    "preview": "pnpm run build && pnpm run start",
     "dev:api": "pnpm --prefix apps/api dev",
     "dev": "pnpm --prefix apps/remix dev",
-    "preview": "turbo run build && pnpm --prefix apps/remix start",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
