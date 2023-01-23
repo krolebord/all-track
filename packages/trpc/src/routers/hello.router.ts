@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const helloRouter = t.router({
   world: t.procedure
-    .input(z.void())
+    .input(z.string())
     .query(({ input }) => {
       return { 
         message:`Hello ${input}!!`,

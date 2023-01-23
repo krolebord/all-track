@@ -4,12 +4,9 @@ import { useLoaderData } from "@remix-run/react";
 import { trpc } from "~/trpc";
 
 export const loader = async () => {
-  const trpcData = await trpc.hello.world.query();
+  const trpcData = await trpc.hello.world.query('ok');
 
-  return json({
-    hello: 'world',
-    fromTrpc: trpcData,
-  });
+  return json(trpcData);
 }
 
 export default function Index() {
@@ -18,11 +15,9 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
-      {loaderData.hello}
-      <br />
-      {loaderData.fromTrpc.message}
-      <br />
-      {loaderData.fromTrpc.date}
+      {loaderData.message}
+      <br/>
+      {loaderData.date}
       <br />
       <Button />
       <ul>

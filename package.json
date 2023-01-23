@@ -8,12 +8,14 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev:api": "pnpm --prefix apps/api dev",
+    "dev": "pnpm --prefix apps/remix dev",
+    "preview": "turbo run build && pnpm --prefix apps/remix start",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@all-track/eslint-config-custom": "workspace:*",
+    "eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
   },

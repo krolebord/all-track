@@ -12,9 +12,6 @@ services = [
 [site]
 bucket = "./public"
 
-[build]
-command = "npm run build"
-
 [miniflare.mounts]
 all-track-api = "../api"
 

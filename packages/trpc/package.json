@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint *.ts*"
   },
   "dependencies": {
     "@trpc/server": "^10.9.0",
@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "typescript": "4.9.4",
-    "@all-track/eslint-config-custom": "workspace:*",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
     "@all-track/tsconfig": "workspace:*"
   }
 }

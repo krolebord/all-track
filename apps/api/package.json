@@ -5,11 +5,10 @@
   "description": "",
   "module": "./build/index.mjs",
   "scripts": {
-    "build": "esbuild index.ts --bundle --format=esm --platform=neutral --main-fields=module,main,browser --outfile=build/index.mjs",
-    "build:prod": "pnpm build --minify",
-    "dev:api": "pnpm build --sourcemap --watch",
+    "build": "esbuild index.ts --bundle --format=esm --platform=neutral --main-fields=module,main,browser --outfile=build/index.mjs --minify",
+    "dev:api": "esbuild index.ts --bundle --format=esm --platform=neutral --main-fields=module,main,browser --outfile=build/index.mjs --sourcemap --watch",
     "dev:miniflare": "cross-env NODE_ENV=development miniflare ./build/index.mjs --watch",
-    "dev": "run-p \"dev:*\"",
+    "dev": "pnpm build && run-p \"dev:*\"",
     "start": "cross-env NODE_ENV=development miniflare ./build/index.mjs"
   },
   "dependencies": {
@@ -18,7 +17,7 @@
     "cross-env": "^7.0.3"
   },
   "devDependencies": {
-    "@all-track/eslint-config-custom": "workspace:*",
+    "eslint-config-custom": "workspace:*",
     "@all-track/tsconfig": "workspace:*",
     "@cloudflare/workers-types": "^3.18.0",
     "esbuild": "^0.17.4",
