@@ -5,6 +5,10 @@ main = "./build/index.js"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
 compatibility_date = "2022-04-05"
 
+routes = [
+	{ pattern = "all-track.krolebord.com", custom_domain = true }
+]
+
 services = [
   { binding = "api", service = "all-track-api" }
 ]

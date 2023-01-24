@@ -5,6 +5,7 @@
   "description": "",
   "module": "./build/index.mjs",
   "scripts": {
+    "publish": "wrangler publish --no-bundle",
     "build": "esbuild index.ts --bundle --format=esm --platform=neutral --main-fields=module,main,browser --outfile=build/index.mjs --minify",
     "dev:api": "esbuild index.ts --bundle --format=esm --platform=neutral --main-fields=module,main,browser --outfile=build/index.mjs --sourcemap --watch",
     "dev:miniflare": "cross-env NODE_ENV=development miniflare ./build/index.mjs --watch",

@@ -3,6 +3,7 @@
   "sideEffects": false,
   "name": "@all-track/remix",
   "scripts": {
+    "publish": "wrangler publish --no-bundle",
     "build": "remix build",
     "dev:remix": "remix watch",
     "dev:api": "pnpm --prefix ../api dev:api",

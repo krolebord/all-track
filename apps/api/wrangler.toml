@@ -5,7 +5,7 @@ main = "./build/index.mjs"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
 compatibility_date = "2022-04-05"
 
-route = "https://krolebord.online/api/*"
+route = "all-track.krolebord.com/api/*"
 
 [env.dev]
 route = "miniflare.test/api/*"
