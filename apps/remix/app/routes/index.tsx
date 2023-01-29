@@ -1,23 +1,10 @@
 import { Button } from "@all-track/ui"
-import { json } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
-import { Debug } from "~/components/Debug";
-import { trpc } from "~/trpc";
-
-export const loader = async () => {
-  const entries = await trpc.hello.entries.query();
-
-  return json({ entries });
-}
 
 export default function Index() {
-  const { entries } = useLoaderData<typeof loader>();
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
       <Button />
-
-      <Debug value={entries} />
 
       <ul>
         <li>

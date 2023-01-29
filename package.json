@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "publish": "turbo publish",
     "db:push": "turbo db:push",
     "db:generate": "turbo db:generate",
     "build": "turbo run build",
