@@ -16,6 +16,9 @@ services = [
 [site]
 bucket = "./public"
 
+[miniflare]
+env_path = "../../.env"
+
 [miniflare.mounts]
 all-track-api = "../api"
 

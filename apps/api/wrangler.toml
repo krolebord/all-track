@@ -12,6 +12,7 @@ route = "miniflare.test/api/*"
 
 [miniflare]
 route = "http://127.0.0.1/api*"
+env_path = "../../.env"
 
 [build.upload]
 format = "modules"

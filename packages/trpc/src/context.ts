@@ -1,15 +1,18 @@
+import { createDb } from "@all-track/db"
+
 export type CreateContextOptions = {
-  jwtSecret: string;
-  token?: string;
+  db: {
+    host: string;
+    username: string;
+    password: string;
+  }
 }
 
-export type Context = {
-  user?: string;
-};
+export type Context = Awaited<ReturnType<typeof createApiContext>>;
 
-export const createApiContext = async <TExternalContext>({
-  jwtSecret,
-  token
-}: CreateContextOptions): Promise<Context & (TExternalContext | {})> => {
-  return {};
+export const createApiContext = async ({
+  db: dbSettings,
+}: CreateContextOptions) => {
+  const db = createDb(dbSettings);
+  return { db };
 };

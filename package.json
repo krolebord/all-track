@@ -7,6 +7,8 @@
     "packages/*"
   ],
   "scripts": {
+    "db:push": "turbo db:push",
+    "db:generate": "turbo db:generate",
     "build": "turbo run build",
     "start": "pnpm --prefix apps/remix start",
     "preview": "pnpm run build && pnpm run start",

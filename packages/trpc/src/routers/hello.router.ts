@@ -10,4 +10,14 @@ export const helloRouter = t.router({
         date: new Date(),
       }
     }),
+  entries: t.procedure
+    .input(z.void())
+    .query(async ({ ctx }) => {
+      const entries = await ctx.db
+        .selectFrom('Entry')
+        .selectAll()
+        .execute();
+
+      return entries;
+    }),
 });

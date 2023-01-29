@@ -28,6 +28,12 @@
       "cache": false
     }
   },
-  "globalEnv": ["NODE_ENV", "DATABASE_URL", "AUTH_SECRET", "AUTH_URL"],
-  "globalDependencies": ["NODE_ENV", "DATABASE_URL", "AUTH_SECRET", "AUTH_URL"]
+  "globalEnv": [
+    "NODE_ENV",
+    "DATABASE_HOST",
+    "DATABASE_USERNAME",
+    "DATABASE_PASSWORD",
+    "DATABASE_URL"
+  ],
+  "globalDependencies": [".env", "tsconfig.json"]
 }

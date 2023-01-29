@@ -1,21 +1,23 @@
-import { PrismaClient } from "@prisma/client";
+import type { Entry } from "@prisma/client/edge";
+import { Kysely } from "kysely";
+import { PlanetScaleDialect } from "kysely-planetscale";
 
-declare global {
-  // eslint-disable-next-line no-var
-  var prisma: PrismaClient | undefined;
+interface Schema {
+  Entry: Entry;
 }
 
-export const prisma =
-  global.prisma ||
-  new PrismaClient({
-    log:
-      process.env.NODE_ENV === "development"
-        ? ["query", "error", "warn"]
-        : ["error"],
-  });
+type DbOptions = {
+  host: string;
+  username: string;
+  password: string;
+};
 
-export * from "@prisma/client";
+export type Db = Kysely<Schema>;
 
-if (process.env.NODE_ENV !== "production") {
-  global.prisma = prisma;
-}
+export const createDb = ({ host, username, password }: DbOptions): Db => new Kysely<Schema>({
+  dialect: new PlanetScaleDialect({
+    host: host,
+    username: username,
+    password: password,
+  }),
+});

@@ -24,7 +24,7 @@ importers:
       eslint-config-custom: workspace:*
       miniflare: ^2.11.0
       npm-run-all: ^4.1.5
-      typescript: ^4.8.4
+      typescript: ^4.9.4
       wrangler: ^2.2.1
     dependencies:
       '@all-track/trpc': link:../../packages/trpc
@@ -93,12 +93,18 @@ importers:
   packages/db:
     specifiers:
       '@all-track/tsconfig': workspace:*
+      '@planetscale/database': ^1.5.0
       '@prisma/client': ^4.9.0
       dotenv-cli: ^7.0.0
+      kysely: ^0.23.4
+      kysely-planetscale: ^1.2.1
       prisma: ^4.9.0
       typescript: ^4.9.4
     dependencies:
+      '@planetscale/database': 1.5.0
       '@prisma/client': 4.9.0_prisma@4.9.0
+      kysely: 0.23.4
+      kysely-planetscale: 1.2.1_3b4ga6arylazwmj6lzyyulo5vq
     devDependencies:
       '@all-track/tsconfig': link:../tsconfig
       dotenv-cli: 7.0.0
@@ -122,6 +128,7 @@ importers:
 
   packages/trpc:
     specifiers:
+      '@all-track/db': workspace:*
       '@all-track/tsconfig': workspace:*
       '@trpc/server': ^10.9.0
       eslint: ^7.32.0
@@ -130,6 +137,7 @@ importers:
       typescript: 4.9.4
       zod: ^3.20.2
     dependencies:
+      '@all-track/db': link:../db
       '@trpc/server': 10.9.0
       superjson: 1.12.2
       zod: 3.20.2
@@ -2267,6 +2275,11 @@ packages:
       tslib: 2.4.1
     dev: true
 
+  /@planetscale/database/1.5.0:
+    resolution: {integrity: sha512-Qwh7Or1W5dB5mZ9EQqDkgvkDKhBBmQe58KIVUy0SGocNtr5fP4JAWtvZ6EdLAV6C6hVpzNlCA2xIg9lKTswm1Q==}
+    engines: {node: '>=16'}
+    dev: false
+
   /@prisma/client/4.9.0_prisma@4.9.0:
     resolution: {integrity: sha512-bz6QARw54sWcbyR1lLnF2QHvRW5R/Jxnbbmwh3u+969vUKXtBkXgSgjDA85nji31ZBlf7+FrHDy5x+5ydGyQDg==}
     engines: {node: '>=14.17'}
@@ -3608,6 +3621,11 @@ packages:
     resolution: {integrity: sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==}
     engines: {node: '>= 6'}
     dev: true
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /deasync/0.1.28:
     resolution: {integrity: sha512-QqLF6inIDwiATrfROIyQtwOQxjZuek13WRYZ7donU5wJPLoP67MnYxA6QtqdvdBy2mMqv5m3UefBVdJjvevOYg==}
@@ -6125,6 +6143,22 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
     dev: true
+
+  /kysely-planetscale/1.2.1_3b4ga6arylazwmj6lzyyulo5vq:
+    resolution: {integrity: sha512-tPgyTSSkU0dwFbwSnWITU4VcuuQfsBA+HfGMYPFcUDBIjMDrzWE4Lbky7ue1NqqF58GyYPn9kOm2e61T9BVwww==}
+    peerDependencies:
+      '@planetscale/database': '*'
+      kysely: '*'
+    dependencies:
+      '@planetscale/database': 1.5.0
+      date-fns: 2.29.3
+      kysely: 0.23.4
+    dev: false
+
+  /kysely/0.23.4:
+    resolution: {integrity: sha512-3icLnj1fahUtZsP9zzOvF4DcdhekGsLX4ZaoBaIz0ZeHegyRDdbwpJD7zezAJ+KwQZNDeKchel6MikFNLsSZIA==}
+    engines: {node: '>=14.0.0'}
+    dev: false
 
   /language-subtag-registry/0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
