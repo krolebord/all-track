@@ -25,7 +25,7 @@ importers:
       miniflare: ^2.11.0
       npm-run-all: ^4.1.5
       typescript: ^4.9.4
-      wrangler: ^2.2.1
+      wrangler: ^2.8.1
     dependencies:
       '@all-track/trpc': link:../../packages/trpc
       '@trpc/server': 10.9.0
@@ -54,17 +54,18 @@ importers:
       '@remix-run/react': ^1.11.1
       '@trpc/client': ^10.9.0
       '@trpc/server': ^10.9.0
-      '@types/react': ^18.0.25
-      '@types/react-dom': ^18.0.8
+      '@types/react': ^18.0.27
+      '@types/react-dom': ^18.0.10
       cross-env: ^7.0.3
       eslint: ^8.27.0
       eslint-config-custom: workspace:*
+      isbot: ^3.6.5
       miniflare: ^2.11.0
       npm-run-all: ^4.1.5
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.9.4
-      wrangler: ^2.2.1
+      wrangler: ^2.8.1
     dependencies:
       '@all-track/trpc': link:../../packages/trpc
       '@all-track/ui': link:../../packages/ui
@@ -74,6 +75,7 @@ importers:
       '@trpc/client': 10.9.0_@trpc+server@10.9.0
       '@trpc/server': 10.9.0
       cross-env: 7.0.3
+      isbot: 3.6.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -5966,6 +5968,11 @@ packages:
   /isarray/2.0.5:
     resolution: {integrity: sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==}
     dev: true
+
+  /isbot/3.6.5:
+    resolution: {integrity: sha512-BchONELXt6yMad++BwGpa0oQxo/uD0keL7N15cYVf0A1oMIoNQ79OqeYdPMFWDrNhCqCbRuw9Y9F3QBjvAxZ5g==}
+    engines: {node: '>=12'}
+    dev: false
 
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
