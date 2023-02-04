@@ -2,21 +2,24 @@
   "name": "@all-track/trpc",
   "private": true,
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*"
+    "lint": "eslint *.ts*",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@all-track/db": "workspace:*",
+    "@panva/hkdf": "^1.0.2",
     "@trpc/server": "^10.9.0",
+    "jose": "^4.11.2",
     "superjson": "^1.12.2",
     "zod": "^3.20.2"
   },
   "devDependencies": {
-    "typescript": "4.9.4",
+    "@all-track/tsconfig": "workspace:*",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
-    "@all-track/tsconfig": "workspace:*"
+    "typescript": "4.9.4"
   }
 }

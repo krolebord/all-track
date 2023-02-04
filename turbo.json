@@ -26,6 +26,9 @@
     },
     "clean": {
       "cache": false
+    },
+    "typecheck": {
+      "outputs": []
     }
   },
   "globalEnv": [

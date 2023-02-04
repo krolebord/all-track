@@ -10,7 +10,7 @@ importers:
     devDependencies:
       eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.8.3
-      turbo: 1.7.0
+      turbo: 1.7.3
 
   apps/api:
     specifiers:
@@ -41,6 +41,31 @@ importers:
       typescript: 4.9.4
       wrangler: 2.8.1
 
+  apps/currencies-cron:
+    specifiers:
+      '@all-track/tsconfig': workspace:*
+      '@cloudflare/workers-types': ^3.18.0
+      cross-env: ^7.0.3
+      esbuild: ^0.17.4
+      eslint: ^8.27.0
+      eslint-config-custom: workspace:*
+      miniflare: ^2.11.0
+      npm-run-all: ^4.1.5
+      typescript: ^4.9.4
+      wrangler: ^2.8.1
+    dependencies:
+      cross-env: 7.0.3
+    devDependencies:
+      '@all-track/tsconfig': link:../../packages/tsconfig
+      '@cloudflare/workers-types': 3.19.0
+      esbuild: 0.17.4
+      eslint: 8.32.0
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      miniflare: 2.11.0
+      npm-run-all: 4.1.5
+      typescript: 4.9.4
+      wrangler: 2.8.1
+
   apps/remix:
     specifiers:
       '@all-track/trpc': workspace:*
@@ -52,6 +77,7 @@ importers:
       '@remix-run/dev': ^1.11.1
       '@remix-run/eslint-config': ^1.11.1
       '@remix-run/react': ^1.11.1
+      '@remix-run/server-runtime': ^1.12.0
       '@trpc/client': ^10.9.0
       '@trpc/server': ^10.9.0
       '@types/react': ^18.0.27
@@ -64,20 +90,29 @@ importers:
       npm-run-all: ^4.1.5
       react: ^18.2.0
       react-dom: ^18.2.0
+      remix-auth: ^3.4.0
+      remix-auth-github: ^1.3.0
+      remix-auth-google: ^1.2.0
       typescript: ^4.9.4
       wrangler: ^2.8.1
+      zod: ^3.20.2
     dependencies:
       '@all-track/trpc': link:../../packages/trpc
       '@all-track/ui': link:../../packages/ui
       '@remix-run/cloudflare': 1.11.1_pppzqxbuosu2y42d4woz36b4ke
       '@remix-run/cloudflare-workers': 1.11.1_pppzqxbuosu2y42d4woz36b4ke
       '@remix-run/react': 1.11.1_biqbaboplfbrettd7655fr4n2y
+      '@remix-run/server-runtime': 1.12.0
       '@trpc/client': 10.9.0_@trpc+server@10.9.0
       '@trpc/server': 10.9.0
       cross-env: 7.0.3
       isbot: 3.6.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      remix-auth: 3.4.0_jd26kugxs45ywwwkgjsbp5rdfa
+      remix-auth-github: 1.3.0_ynr7gzkhaqxia4i6pdigmtuncy
+      remix-auth-google: 1.2.0_ynr7gzkhaqxia4i6pdigmtuncy
+      zod: 3.20.2
     devDependencies:
       '@all-track/tsconfig': link:../../packages/tsconfig
       '@cloudflare/workers-types': 3.19.0
@@ -101,6 +136,7 @@ importers:
       kysely: ^0.23.4
       kysely-planetscale: ^1.2.1
       prisma: ^4.9.0
+      type-fest: ^3.5.4
       typescript: ^4.9.4
     dependencies:
       '@planetscale/database': 1.5.0
@@ -111,6 +147,7 @@ importers:
       '@all-track/tsconfig': link:../tsconfig
       dotenv-cli: 7.0.0
       prisma: 4.9.0
+      type-fest: 3.5.4
       typescript: 4.9.4
 
   packages/eslint-config-custom:
@@ -132,15 +169,19 @@ importers:
     specifiers:
       '@all-track/db': workspace:*
       '@all-track/tsconfig': workspace:*
+      '@panva/hkdf': ^1.0.2
       '@trpc/server': ^10.9.0
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
+      jose: ^4.11.2
       superjson: ^1.12.2
       typescript: 4.9.4
       zod: ^3.20.2
     dependencies:
       '@all-track/db': link:../db
+      '@panva/hkdf': 1.0.2
       '@trpc/server': 10.9.0
+      jose: 4.11.2
       superjson: 1.12.2
       zod: 3.20.2
     devDependencies:
@@ -2265,6 +2306,10 @@ packages:
       json-parse-even-better-errors: 2.3.1
     dev: true
 
+  /@panva/hkdf/1.0.2:
+    resolution: {integrity: sha512-MSAs9t3Go7GUkMhpKC44T58DJ5KGk2vBo+h1cqQeqlMfdGkxaVB78ZWpv9gYi/g2fa4sopag9gJsNvS8XGgWJA==}
+    dev: false
+
   /@pkgr/utils/2.3.1:
     resolution: {integrity: sha512-wfzX8kc1PMyUILA+1Z/EqoE4UCXGy0iRGMhPwdfae1+f0OXlLqCk+By+aMzgJBzR9AzS4CDizioG6Ss1gvAFJw==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
@@ -2457,6 +2502,11 @@ packages:
     resolution: {integrity: sha512-nwQoYb3m4DDpHTeOwpJEuDt8lWVcujhYYSFGLluC+9es2PyLjm+jjq3IeRBQbwBtPLJE/lkuHuGHr8uQLgmJRA==}
     engines: {node: '>=14'}
 
+  /@remix-run/router/1.3.1:
+    resolution: {integrity: sha512-+eun1Wtf72RNRSqgU7qM2AMX/oHp+dnx7BHk1qhK5ZHzdHTUU4LA1mGG1vT+jMc8sbhG3orvsfOmryjzx2PzQw==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@remix-run/server-runtime/1.11.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-D0jTiaUSMK0q29CTVL7Bn4SlE6fd4bnp18vxObjSXlA6VYrzDAK3pQ/1baDawPdxBDIQPqImXOQ6g4aAYImfCA==}
     engines: {node: '>=14'}
@@ -2472,6 +2522,19 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       set-cookie-parser: 2.5.1
       source-map: 0.7.4
+
+  /@remix-run/server-runtime/1.12.0:
+    resolution: {integrity: sha512-7I0165Ns/ffPfCEfuiqD58lMderTn2s/sew1xJ34ONa21mG/7+5T7diHIgxKST8rS3816JPmlwSqUaHgwbmO6Q==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@remix-run/router': 1.3.1
+      '@types/cookie': 0.4.1
+      '@types/react': 18.0.27
+      '@web3-storage/multipart-parser': 1.0.0
+      cookie: 0.4.2
+      set-cookie-parser: 2.5.1
+      source-map: 0.7.4
+    dev: false
 
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -2633,7 +2696,6 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
 
   /@types/react-dom/18.0.10:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
@@ -2647,7 +2709,6 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
-    dev: true
 
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
@@ -2657,7 +2718,6 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: true
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
@@ -3613,7 +3673,6 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-    dev: true
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -5993,6 +6052,10 @@ packages:
     resolution: {integrity: sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==}
     dev: true
 
+  /jose/4.11.2:
+    resolution: {integrity: sha512-njj0VL2TsIxCtgzhO+9RRobBvws4oYyCM8TpvoUQwl/MbIM3NFJRR9+e6x0sS5xXaP1t6OCBkaBME98OV9zU5A==}
+    dev: false
+
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
     dev: true
@@ -7955,6 +8018,57 @@ packages:
       unified: 10.1.2
     dev: true
 
+  /remix-auth-github/1.3.0_ynr7gzkhaqxia4i6pdigmtuncy:
+    resolution: {integrity: sha512-dqveIbXc1yXQXiB8UVjKSR3qgHFUZ0VJOu2/GTT5uMKZY0//FSnp1w8gK0btGlbc1HW97gig16uS84et6FBMiA==}
+    peerDependencies:
+      '@remix-run/server-runtime': ^1.0.0
+      remix-auth: ^3.4.0
+    dependencies:
+      '@remix-run/server-runtime': 1.12.0
+      remix-auth: 3.4.0_jd26kugxs45ywwwkgjsbp5rdfa
+      remix-auth-oauth2: 1.6.0_ynr7gzkhaqxia4i6pdigmtuncy
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /remix-auth-google/1.2.0_ynr7gzkhaqxia4i6pdigmtuncy:
+    resolution: {integrity: sha512-llyrtOt8vk503XlAoEdGuEmrHRACFOP13yPVn92VkrcogTUyALzuy8ky2O1/FSJ7Q2+B0di5yMiCF4IYD/Yn4g==}
+    peerDependencies:
+      '@remix-run/server-runtime': ^1.1.1
+      remix-auth: ^3.2.1
+    dependencies:
+      '@remix-run/server-runtime': 1.12.0
+      remix-auth: 3.4.0_jd26kugxs45ywwwkgjsbp5rdfa
+      remix-auth-oauth2: 1.6.0_ynr7gzkhaqxia4i6pdigmtuncy
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /remix-auth-oauth2/1.6.0_ynr7gzkhaqxia4i6pdigmtuncy:
+    resolution: {integrity: sha512-HnMgdKn/+LIKHYlbxys14g9cUMGvzMS9mbopAfnntIYWBC8MOfUy6uYyyoWJNqm3HriAE/MiEUaTnlz3B0c7uQ==}
+    peerDependencies:
+      '@remix-run/server-runtime': ^1.0.0
+      remix-auth: ^3.2.2
+    dependencies:
+      '@remix-run/server-runtime': 1.12.0
+      debug: 4.3.4
+      remix-auth: 3.4.0_jd26kugxs45ywwwkgjsbp5rdfa
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /remix-auth/3.4.0_jd26kugxs45ywwwkgjsbp5rdfa:
+    resolution: {integrity: sha512-VRliJo9VRAS4sSYgMjYbi7rYRixPWU2Tb8PFZb06OIj0nONK/1KRzHf2+Y6VGZeIacepLVgan6g2IUJjayE2rQ==}
+    peerDependencies:
+      '@remix-run/react': ^1.0.0
+      '@remix-run/server-runtime': ^1.0.0
+    dependencies:
+      '@remix-run/react': 1.11.1_biqbaboplfbrettd7655fr4n2y
+      '@remix-run/server-runtime': 1.12.0
+      uuid: 8.3.2
+    dev: false
+
   /repeat-element/1.1.4:
     resolution: {integrity: sha512-LFiNfRcSu7KK3evMyYOuCzv3L10TW7yC1G2/+StMjK8Y6Vqd2MG7r/Qjw4ghtuCOjFvlnms/iMmLqpvW/ES/WQ==}
     engines: {node: '>=0.10.0'}
@@ -8759,65 +8873,65 @@ packages:
       typescript: 4.9.4
     dev: true
 
-  /turbo-darwin-64/1.7.0:
-    resolution: {integrity: sha512-hSGAueSf5Ko8J67mpqjpt9FsP6ePn1nMcl7IVPoJq5dHsgX3anCP/BPlexJ502bNK+87DDyhQhJ/LPSJXKrSYQ==}
+  /turbo-darwin-64/1.7.3:
+    resolution: {integrity: sha512-7j9+j1CVztmdevnClT3rG/GRhULf3ukwmv+l48l8uwsXNI53zLso+UYMql6RsjZDbD6sESwh0CHeKNwGmOylFA==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64/1.7.0:
-    resolution: {integrity: sha512-BLLOW5W6VZxk5+0ZOj5AO1qjM0P5isIgjbEuyAl8lHZ4s9antUbY4CtFrspT32XxPTYoDl4UjviPMcSsbcl3WQ==}
+  /turbo-darwin-arm64/1.7.3:
+    resolution: {integrity: sha512-puS9+pqpiy4MrIvWRBTg3qfO2+JPXR7reQcXQ7qUreuyAJnSw9H9/TIHjeK6FFxUfQbmruylPtH6dNpfcML9CA==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64/1.7.0:
-    resolution: {integrity: sha512-aw2qxmfZa+kT87SB3GNUoFimqEPzTlzlRqhPgHuAAT6Uf0JHnmebPt4K+ZPtDNl5yfVmtB05bhHPqw+5QV97Yg==}
+  /turbo-linux-64/1.7.3:
+    resolution: {integrity: sha512-BnbpgcK8Wag6fhnff7tMaecswmFHN/T56VIDnjcwcJnK9H3jdwpjwZlmcDtkoslzjPj3VuqHyqLDMvSb3ejXSg==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64/1.7.0:
-    resolution: {integrity: sha512-AJEx2jX+zO5fQtJpO3r6uhTabj4oSA5ZhB7zTs/rwu/XqoydsvStA4X8NDW4poTbOjF7DcSHizqwi04tSMzpJw==}
+  /turbo-linux-arm64/1.7.3:
+    resolution: {integrity: sha512-+epY+0dfjmAJNZHfj7rID2hENRaeM3D0Ijqkhh/M53o46fQMwPNqI5ff9erh+f9r8sWuTpVnRlZeu7TE1P/Okw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64/1.7.0:
-    resolution: {integrity: sha512-ewj7PPv2uxqv0r31hgnBa3E5qwUu7eyVRP5M1gB/TJXfSHduU79gbxpKCyxIZv2fL/N2/3U7EPOQPSZxBAoljA==}
+  /turbo-windows-64/1.7.3:
+    resolution: {integrity: sha512-/2Z8WB4fASlq/diO6nhmHYuDCRPm3dkdUE6yhwQarXPOm936m4zj3xGQA2eSWMpvfst4xjVxxU7P7HOIOyWChA==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64/1.7.0:
-    resolution: {integrity: sha512-LzjOUzveWkvTD0jP8DBMYiAnYemmydsvqxdSmsUapHHJkl6wKZIOQNSO7pxsy+9XM/1/+0f9Y9F9ZNl5lePTEA==}
+  /turbo-windows-arm64/1.7.3:
+    resolution: {integrity: sha512-UD9Uhop42xj1l1ba5LRdwqRq1Of+RgqQuv+QMd1xOAZ2FXn/91uhkfLv+H4Pkiw7XdUohOxpj/FcOvjCiiUxGw==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo/1.7.0:
-    resolution: {integrity: sha512-cwympNwQNnQZ/TffBd8yT0i0O10Cf/hlxccCYgUcwhcGEb9rDjE5thDbHoHw1hlJQUF/5ua7ERJe7Zr0lNE/ww==}
+  /turbo/1.7.3:
+    resolution: {integrity: sha512-mrqo72vPQO6ykmARThaNP/KXPDuBDSqDXfkUxD8hX1ET3YSFbOWJixlHU32tPtiFIhScIKbEGShEVWBrLeM0wg==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.7.0
-      turbo-darwin-arm64: 1.7.0
-      turbo-linux-64: 1.7.0
-      turbo-linux-arm64: 1.7.0
-      turbo-windows-64: 1.7.0
-      turbo-windows-arm64: 1.7.0
+      turbo-darwin-64: 1.7.3
+      turbo-darwin-arm64: 1.7.3
+      turbo-linux-64: 1.7.3
+      turbo-linux-arm64: 1.7.3
+      turbo-windows-64: 1.7.3
+      turbo-windows-arm64: 1.7.3
     dev: true
 
   /type-check/0.3.2:
@@ -8840,6 +8954,11 @@ packages:
   /type-fest/0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
+    dev: true
+
+  /type-fest/3.5.4:
+    resolution: {integrity: sha512-/Je22Er4LPoln256pcLzj73MUmPrTWg8u4WB1RlxaDl0idJOfD1r259VtKOinp4xLJqJ9zYVMuWOun6Ssp7boA==}
+    engines: {node: '>=14.16'}
     dev: true
 
   /type-is/1.6.18:
@@ -9056,6 +9175,11 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
     dev: true
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
 
   /uvu/0.5.6:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}

@@ -1,10 +1,13 @@
-import { json } from "@remix-run/cloudflare";
+import { json, LoaderFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
+import { authenticator } from "~/auth/auth.server";
 import { Debug } from "~/components/Debug";
-import { trpc } from "~/trpc";
+import { trpc } from "~/trpc.server";
 
-export const loader = async () => {
-  const entries = await trpc.hello.entries.query();
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await authenticator.isAuthenticated(request);
+  console.log("user", user);
+  const entries = await trpc().hello.entries.query();
 
   return json({ entries });
 };

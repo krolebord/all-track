@@ -1,10 +1,8 @@
-import type { Entry } from "@prisma/client/edge";
 import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
-
-interface Schema {
-  Entry: Entry;
-}
+import type { Schema, Types } from "./schema";
+import { Merge } from "type-fest";
+import { UserEmailProvider } from "@prisma/client";
 
 type DbOptions = {
   host: string;
@@ -13,6 +11,13 @@ type DbOptions = {
 };
 
 export type Db = Kysely<Schema>;
+
+export type DbTypes = Merge<
+  Types,
+  {
+    UserEmailProvider: UserEmailProvider
+  }
+>;
 
 export const createDb = ({ host, username, password }: DbOptions): Db => new Kysely<Schema>({
   dialect: new PlanetScaleDialect({

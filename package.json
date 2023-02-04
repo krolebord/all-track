@@ -15,6 +15,7 @@
     "preview": "pnpm run build && pnpm run start",
     "dev:api": "pnpm --prefix apps/api dev",
     "dev": "pnpm --prefix apps/remix dev",
+    "typecheck": "turbo run typecheck",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

@@ -6,9 +6,23 @@ generator client {
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
     relationMode = "prisma"
+}
+
+enum UserEmailProvider {
+    Google
+    GitHub
+}
+
+model User {
+    id            String            @id @default(cuid())
+    email         String            @unique
+    emailProvider UserEmailProvider
+    createdAt     DateTime          @default(now())
+
+    @@index([email])
 }
 
 model Entry {
