@@ -6,7 +6,6 @@ import { trpc } from "~/trpc.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await authenticator.isAuthenticated(request);
-  console.log("user", user);
   const entries = await trpc().hello.entries.query();
 
   return json({ entries });

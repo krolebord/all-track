@@ -1,4 +1,4 @@
-import { DbTypes } from "@all-track/db";
+import { UserEmailProvider } from "@all-track/db";
 import { z } from "zod";
 
 type UserEmailResult = 
@@ -21,8 +21,6 @@ const fetchGithubUserEmail = async (token: string): Promise<UserEmailResult> => 
       Authorization: `Bearer ${token}`,
     },
   });
-
-  console.log(response.status);
 
   if (!response.ok) {
     return { status: 'invalid-token' };
@@ -79,7 +77,7 @@ const fetchGoogleUserEmail = async (token: string): Promise<UserEmailResult> => 
   return { status: 'ok', email: parseResult.data.email };
 }
 
-export const fetchVerifiedUserEmail = (provider: DbTypes['UserEmailProvider'], token: string): Promise<UserEmailResult> => {
+export const fetchVerifiedUserEmail = (provider: UserEmailProvider, token: string): Promise<UserEmailResult> => {
   switch (provider) {
     case 'GitHub':
       return fetchGithubUserEmail(token);

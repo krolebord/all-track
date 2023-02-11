@@ -18,7 +18,7 @@ export type User = z.infer<typeof userSchema>;
 
 type AuthCallbackOptions = inferRouterInputs<AppRouter>['auth']['loginWithExternalProvider'];
 
-export const externalAuthCallback = async (opts: AuthCallbackOptions) => {
+const externalAuthCallback = async (opts: AuthCallbackOptions): Promise<User> => {
   const apiCredentials = await trpc().auth.loginWithExternalProvider.mutate(opts);
 
   if (apiCredentials.status !== 'ok') {

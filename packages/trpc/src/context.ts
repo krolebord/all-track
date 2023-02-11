@@ -7,9 +7,7 @@ export type CreateContextOptions = {
     secret: string;
   },
   db: {
-    host: string;
-    username: string;
-    password: string;
+    url: string;
   }
 }
 

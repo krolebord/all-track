@@ -3,9 +3,7 @@ import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 type Env = {
   JWT_SECRET: string,
-  DATABASE_HOST: string,
-  DATABASE_USERNAME: string,
-  DATABASE_PASSWORD: string
+  DATABASE_PROXY_URL: string
 };
 
 export default {
@@ -20,9 +18,7 @@ export default {
         },
         request,
         db: {
-          host: env.DATABASE_HOST,
-          username: env.DATABASE_USERNAME,
-          password: env.DATABASE_PASSWORD,
+          url: env.DATABASE_PROXY_URL
         }
       }),
     });

@@ -6,15 +6,16 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint *.ts*",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@all-track/db": "workspace:*",
     "@panva/hkdf": "^1.0.2",
-    "@trpc/server": "^10.9.0",
-    "jose": "^4.11.2",
+    "@prisma/client": "^4.10.1",
+    "@trpc/server": "^10.11.0",
+    "jose": "^4.11.4",
     "superjson": "^1.12.2",
-    "zod": "^3.20.2"
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@all-track/tsconfig": "workspace:*",

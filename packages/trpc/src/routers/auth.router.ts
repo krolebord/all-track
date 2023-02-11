@@ -1,4 +1,4 @@
-import type { Db, DbTypes } from "@all-track/db";
+import type { Db, UserEmailProvider } from "@all-track/db";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { fetchVerifiedUserEmail } from "../auth/email-utils";
@@ -7,24 +7,33 @@ import { authorizedProcedure } from "../procedures";
 import { t } from "../trpc";
 
 type NewUser = {
-  provider: DbTypes['UserEmailProvider'];
+  provider: UserEmailProvider;
   email: string;
 }
 
-const createUser = async (db: Db, user: NewUser) => await db
-  .insertInto('User')
-  .values([{
-    id: crypto.randomUUID(),
-    email: user.email,
-    emailProvider: user.provider
-  }])
-  .executeTakeFirstOrThrow();
+const createUser = async (db: Db, user: NewUser) => await db.user
+  .create({
+    data: {
+      id: crypto.randomUUID(),
+      email: user.email,
+      emailProvider: user.provider
+    },
+    select: {
+      id: true,
+      emailProvider: true,
+      email: true
+    }
+  });
 
-const getUserByEmail = async (db: Db, email: string) => await db
-  .selectFrom('User')
-  .where('User.email', '=', email)
-  .select(['User.id', 'User.emailProvider', 'User.email'])
-  .executeTakeFirst();
+const getUserByEmail = async (db: Db, email: string) => await db.user
+  .findFirst({
+    where: { email },
+    select: {
+      id: true,
+      emailProvider: true,
+      email: true
+    }
+  });
 
 export const authRouter = t.router({
   loginWithExternalProvider: t.procedure
@@ -52,11 +61,10 @@ export const authRouter = t.router({
       let user = await getUserByEmail(db, email);
       
       if (!user) {
-        await createUser(db, { 
+        user = await createUser(db, { 
           provider: token.provider,
           email: email,
         });
-        user = await getUserByEmail(db, email);
       }
 
       if (!user) {

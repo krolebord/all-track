@@ -13,10 +13,13 @@ export const helloRouter = t.router({
   entries: t.procedure
     .input(z.void())
     .query(async ({ ctx }) => {
-      const entries = await ctx.db
-        .selectFrom('Entry')
-        .selectAll()
-        .execute();
+      const entries = await ctx.db.user
+        .findMany({
+          include: {
+            entries: true,
+            wallets: true
+          }
+        });
 
       return entries;
     }),
