@@ -1,0 +1,5 @@
+{
+  "extends": "@all-track/tsconfig/base.json",
+  "include": ["env.d.ts", "**/*.ts",],
+  "exclude": ["dist", "build", "node_modules"],
+}
