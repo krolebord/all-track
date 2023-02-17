@@ -1,11 +1,5 @@
 {
   "extends": "@all-track/tsconfig/base.json",
-  "compilerOptions": {
-    "paths": {
-      "web:hkdf": ["./node_modules/@panva/hkdf/dist/web/index.js"],
-      "web:jose": ["./node_modules/jose/dist/browser/index.js"],
-    }
-  },
   "include": ["env.d.ts", "**/*.ts",],
   "exclude": ["dist", "build", "node_modules"],
 }

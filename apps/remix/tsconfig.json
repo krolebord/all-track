@@ -1,9 +1,8 @@
 {
   "extends": "@all-track/tsconfig/base.json",
   "include": [
-    "remix.env.d.ts",
-    "env.d.ts",
-    "worker-configuration.d.ts",
+    "types/remix.env.d.ts",
+    "types/env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],

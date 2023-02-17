@@ -1,5 +1,5 @@
 name = "all-track-remix"
-
+type = "javascript"
 workers_dev = true
 main = "./build/index.js"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
@@ -23,4 +23,5 @@ env_path = "../../.env"
 [miniflare.mounts]
 all-track-api = "../api"
 
-
+[build.upload]
+format = "modules"

@@ -1,15 +1,15 @@
-import { json, LoaderFunction } from "@remix-run/cloudflare";
-import { Outlet } from "@remix-run/react";
+import { json, LoaderFunction, SerializeFrom } from "@remix-run/cloudflare";
+import { Outlet, useLoaderData, useNavigate, useRouteLoaderData } from "@remix-run/react";
 import { requireUser } from "~/auth/auth-utils.server";
-import { useMatchedData as useMatchesData } from "~/utils/loader-utils";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const user = requireUser(request);
+export const loader = async ({ request, context }: LoaderArgs) => {
+  const user = await requireUser(request, context);
   return json({ user });
 };
 
 export const useUser = () => {
-  const userData = useMatchesData('app');
+  const userData = useRouteLoaderData('app') as SerializeFrom<typeof loader>;
+  return userData.user;
 };
 
 export default function AppRoute() {

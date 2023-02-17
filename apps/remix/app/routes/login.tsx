@@ -1,16 +1,14 @@
-import { ActionFunction, LoaderFunction } from "@remix-run/cloudflare";
-import { Form } from "@remix-run/react";
 import { authenticator } from "~/auth/auth.server";
 import { ExternalLogin } from "~/components/ExternalLogin";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  return await authenticator.isAuthenticated(request, {
+export const loader = async ({ request, context }: LoaderArgs) => {
+  return await authenticator(context).isAuthenticated(request, {
     successRedirect: "/app",
   });
 };
 
-export const action: ActionFunction = async ({ request }) => {
-  return await authenticator.authenticate("password", request, {
+export const action = async ({ request, context }: ActionArgs) => {
+  return await authenticator(context).authenticate("password", request, {
     successRedirect: "/app",
     failureRedirect: "/login",
   });

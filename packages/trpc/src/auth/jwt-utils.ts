@@ -1,5 +1,5 @@
-import hkdf from "web:hkdf";
-import { EncryptJWT, jwtDecrypt } from "web:jose";
+import hkdf from "@panva/hkdf";
+import { EncryptJWT, jwtDecrypt } from "jose";
 import { z } from "zod";
 
 type TokenUser = z.infer<typeof tokenScheme>;
