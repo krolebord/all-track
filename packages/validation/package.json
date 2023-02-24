@@ -1,5 +1,5 @@
 {
-  "name": "@all-track/trpc",
+  "name": "@all-track/validation",
   "private": true,
   "version": "0.0.0",
   "main": "index.ts",
@@ -11,13 +11,6 @@
   },
   "dependencies": {
     "@all-track/currencies": "workspace:*",
-    "@all-track/db": "workspace:*",
-    "@all-track/validation": "workspace:*",
-    "@panva/hkdf": "^1.0.2",
-    "@prisma/client": "^4.10.1",
-    "@trpc/server": "^10.12.0",
-    "jose": "^4.12.0",
-    "superjson": "^1.12.2",
     "zod": "^3.20.6",
     "zod-form-data": "^2.0.0"
   },
