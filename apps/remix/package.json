@@ -1,6 +1,7 @@
 {
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "name": "@all-track/remix",
   "scripts": {
     "publish": "wrangler publish --no-bundle",
