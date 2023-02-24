@@ -3,10 +3,15 @@ import { Link, Outlet, useLoaderData, useRouteLoaderData } from "@remix-run/reac
 import { requireUser } from "~/auth/auth-utils.server";
 import { AvatarIcon } from '@radix-ui/react-icons';
 import { GlobalProgressIndicator } from "~/components/GlobalProgressIndicator";
+import { userTrpc } from "~/trpc.server";
 
 export const loader = async ({ request, context }: LoaderArgs) => {
   const user = await requireUser(request, context);
-  return json({ user });
+  
+  const trpc = userTrpc(context, user.apiToken);
+  const userWallets = await trpc.wallets.getWallets.query();
+
+  return json({ user, userWallets });
 };
 
 export const useUser = () => {
