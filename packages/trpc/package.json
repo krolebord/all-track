@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint *.ts*",
-    "typecheck": "tsc"
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "pnpm typecheck --watch"
   },
   "dependencies": {
     "@all-track/currencies": "workspace:*",

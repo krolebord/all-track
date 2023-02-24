@@ -29,6 +29,9 @@
     },
     "typecheck": {
       "outputs": []
+    },
+    "typecheck:watch": {
+      "outputs": []
     }
   },
   "globalEnv": [

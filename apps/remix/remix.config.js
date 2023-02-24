@@ -7,6 +7,10 @@ module.exports = {
   serverDependenciesToBundle: [/^(?!(__STATIC_CONTENT_MANIFEST)$).*$/u],
   serverConditions: ["workerd", "worker", "browser"],
   ignoredRouteFiles: ["**/.*"],
+  devServerBroadcastDelay: 500,
+  watchPaths: [
+    "../../packages/trpc/**/*"
+  ],
   future: {
     v2_routeConvention: true,
     unstable_tailwind: true,

@@ -16,13 +16,14 @@
     "dev:api": "pnpm --prefix apps/api dev",
     "dev": "pnpm --prefix apps/remix dev",
     "typecheck": "turbo run typecheck",
+    "typecheck:watch": "turbo run typecheck:watch",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
     "prettier": "^2.8.4",
-    "turbo": "^1.7.4"
+    "turbo": "^1.8.2"
   },
   "engines": {
     "node": ">=14.0.0"
