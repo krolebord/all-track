@@ -1,5 +1,6 @@
-import { Link, Outlet } from "@remix-run/react";
-import { json, LoaderFunction } from "@remix-run/cloudflare";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
+import { json, redirect } from "@remix-run/cloudflare";
+import { namedAction } from "remix-utils";
 
 export const loader = (async ({ request }) => {
   return json({});
@@ -7,7 +8,7 @@ export const loader = (async ({ request }) => {
 
 export default function Route() {
   return (<>
-    <Link to={'new'}>new</Link>
-    <Outlet />
+    <h1>Wallets</h1>
+    <WalletForm action='?/createWallet' />
   </>);
 }

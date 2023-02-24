@@ -1,8 +1,11 @@
+import clsx from "clsx";
+import { HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
 import { useField } from "remix-validated-form";
 import { FormField, FormFieldProps } from './FormField';
 
-type FormInputProps = FormFieldProps & {
+type FormInputProps = FormFieldProps & InputHTMLAttributes<HTMLInputElement> & {
   isRequired?: boolean;
+  type?: HTMLInputTypeAttribute
 };
 
 export const FormInput = (props: FormInputProps) => {
@@ -10,7 +13,8 @@ export const FormInput = (props: FormInputProps) => {
     id,
     label,
     description,
-    isRequired
+    isRequired,
+    ...rest
   } = props;
 
   const { getInputProps, error } = useField(id);
@@ -18,7 +22,15 @@ export const FormInput = (props: FormInputProps) => {
 
   return (
     <FormField id={id} label={label} description={description} error={error} >
-      <input {...inputProps} required={isRequired ?? false} />
+      <input
+        className={clsx(
+          'px-1 bg-transparent border-b-2 border-gray-700 outline-none bg-gradient-to-t from-gray-800 focus:from-gray-700/70 focus:border-gray-500',
+          error && 'border-red-500'
+        )}
+        {...inputProps}
+        {...rest}
+        required={isRequired ?? false}
+      />
     </FormField>
   );
 };

@@ -13,6 +13,12 @@ const currencyOptions = currencies.map(currency => ({
   value: currency.code.toString()
 }));
 
+const SubmitButton = () => {
+  return (
+    <button type="submit">Submit</button>
+  );
+}
+
 type WalletFormProps = {
   action: string;
   defaultValues?: z.infer<typeof newWalletSchema>;
@@ -26,12 +32,14 @@ export const WalletForm = (props: WalletFormProps) => {
       defaultValues={defaultValues}
       method="post"
       action={action}
+      className="grid grid-cols-4 gap-4"
+      autoComplete="off"
     >
-      <FormInput id={"name"} />
-      <FormInput id={"description"} />
-      <FormInput id={"balance"} />
-      <FormSelect id={"currency"} items={currencyOptions} />
-      <button type="submit">Submit</button>
+      <FormInput id="name" label='Wallet name'/>
+      <FormInput id="description" label='Short Description'/>
+      <FormInput id="balance" type="number" min="0" label='Balance'/>
+      <FormSelect id="currencyCode" items={currencyOptions} />
+      <SubmitButton />
     </ValidatedForm>
   );
 };
