@@ -1,4 +1,4 @@
-import { vi } from "vitest";
+import { Mock, vi } from "vitest";
 import { fetchCurrencies } from "~/fetch";
 import { Env } from "..";
 
@@ -48,4 +48,4 @@ const fetchCurrenciesMockImplementation: typeof fetchCurrencies = async (_, key:
   });
 };
 
-export const mockFetchCurrencies = vi.fn(fetchCurrenciesMockImplementation);
+export const mockFetchCurrencies: Mock = vi.fn(fetchCurrenciesMockImplementation);

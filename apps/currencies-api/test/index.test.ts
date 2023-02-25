@@ -25,14 +25,15 @@ afterEach(() => {
   vi.clearAllMocks()
 });
 
-it('should throw immediately when env is invalid', async () => {
+it('should not call external api when env is invalid', async () => {
   const invalidEnv: typeof env = {
     CURRENCIES_KV: env.CURRENCIES_KV,
     CURRENCIES_API_KEY: null!,
     CURRENCIES_API_URL: null!,
   }
 
-  await expect(api.fetch(new Request('http://example.com'), invalidEnv)).rejects.toThrow();
+  const response = await api.fetch(new Request('http://example.com'), invalidEnv);
+  expect(response.status).toBe(500);
   expect(mockFetchCurrencies).toHaveBeenCalledTimes(0);
 });
 
