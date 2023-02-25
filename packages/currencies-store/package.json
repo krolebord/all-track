@@ -1,0 +1,23 @@
+{
+  "name": "@all-track/currencies-store",
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint *.ts*",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "pnpm typecheck --watch"
+  },
+  "dependencies": {
+    "@all-track/currencies": "workspace:*",
+    "zod": "^3.20.6"
+  },
+  "devDependencies": {
+    "@all-track/tsconfig": "workspace:*",
+    "@cloudflare/workers-types": "^3.18.0",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "typescript": "4.9.5"
+  }
+}

@@ -54,6 +54,6 @@ export const currencies = [
     code: 826,
     units: 2,
   }
-] as const satisfies readonly (ValidCurrency & Omit<Currency, keyof ValidCurrency>)[];
+] satisfies (ValidCurrency & Omit<Currency, keyof ValidCurrency>)[];
 
 export const currencyCodes = currencies.map((currency) => currency.code);

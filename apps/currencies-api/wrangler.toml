@@ -1,0 +1,21 @@
+name = "all-track-api"
+type = "javascript"
+workers_dev = true
+main = "./build/index.mjs"
+# https://developers.cloudflare.com/workers/platform/compatibility-dates
+compatibility_date = "2023-01-30"
+
+kv_namespaces = [
+  { binding = "CURRENCIES_KV", id = "5b124891a0a6450195a912da07fa3c85" }
+]
+
+[trigger]
+crons = ["1 0 * * *"]
+
+[miniflare]
+port=8788
+env_path = "../../.env"
+kv_persist = "../../.data/kv/"
+
+[build.upload]
+format = "modules"

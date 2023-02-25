@@ -1,0 +1,23 @@
+{
+  "extends": "@all-track/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "types": ["@cloudflare/workers-types", "vitest/importMeta", "vitest-environment-miniflare/globals"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
